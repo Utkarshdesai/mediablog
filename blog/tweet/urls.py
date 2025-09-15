@@ -1,4 +1,3 @@
-
 from django.urls import path
 from . import views
 
@@ -8,5 +7,8 @@ from . import views
 
 urlpatterns = [
    
-    path('' , views.home , name="home")
+    path('' , views.List_tweets , name="tweet_list"),
+    path('newtweet/' , views.New_tweet , name='new_tweet'),
+    path('<int:tweet_id>/edit/', views.Edit_tweet , name="new_tweet"),
+    path('<int:tweet_id>/delete/', views.delete_tweet , name="delete_tweet"),
 ] 

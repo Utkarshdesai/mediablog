@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tweets Page
+{% endblock title %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Tweets List</h1>
+
+<a href="{% url 'new_tweet' %}"> create tweet </a>
+
+{% for tweet in tweets %}
+
+  <p> {{tweet.description}}   </p> 
+   <img src = {{tweet.photo.url}} />
+   <p> {{tweet.user}} </p>
+
+   <a href="{% url 'new_tweet' tweet.id %}"> Edit </a> 
+   <a href="{% url 'delete_tweet'  tweet.id %}"> Delete </a> 
+{% endfor %}
+
+
+
+
+
+
+{% endblock content %} 

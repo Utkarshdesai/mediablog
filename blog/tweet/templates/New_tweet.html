@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tweets Page
+{% endblock title %}
+
+{% block content %}
+
+
+{% if form.instance.pk %}
+ edit tweet
+{% else %}
+Create tweet
+
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     {{form}}
+     <button type="submit"> submit </button>
+     <a href="{% url 'tweet_list' %}"> GO back  </a>
+  </form>
+  
+{% endblock %}
+
+

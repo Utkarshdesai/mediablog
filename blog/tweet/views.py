@@ -12,7 +12,7 @@ def List_tweets(request):
     # fetch tweet from model 
     Tweets = tweet.objects.all().order_by('-created_at')
     # pass to templates 
-    return render( request , 'tweet_list.html' , { 'tweet': Tweets } )
+    return render( request , 'tweet_list.html' , { 'tweets': Tweets } )
 
 
 # Create the new tweet 
@@ -24,40 +24,34 @@ def New_tweet(request):
           tweet = form.save(commit=False)
           tweet.user = request.user
           tweet.save()
-          return redirect('List_tweets')  
+          return redirect('tweet_list')  
     else:
         form = tweetform()
 
-    return render( request , 'New_tweet.html' , {'form' : form})
+    return render(request , 'New_tweet.html' , {'form' : form})
     
-    
+      
 
-     
-    # empty form to user 
-
-    # render form in templates 
+# edit twwets
 def Edit_tweet(request , tweet_id):
-    tweet = get_object_or_404(tweet ,pk= tweet_id , user = request.user)
+    tweets = get_object_or_404(tweet , pk= tweet_id , user = request.user)
     if request.method == 'POST':
       form = tweetform(request.POST , request.FILES , instance=tweet)
       if form.is_valid():
-          tweet = form.save(commit=False)
-          tweet.user = request.user
-          tweet.save()
-          return redirect('List_tweets')
-          
-      
-      pass
+          tweets = form.save(commit=False)
+          tweets.user = request.user
+          tweets.save()
+          return redirect('tweet_list')        
     else:
-        form = tweetform(instance = tweet)
+        form = tweetform(instance = tweets)
 
     return render( request , 'New_tweet.html' , {'form' : form})
 
 def delete_tweet(request , tweet_id):
-    tweet = get_object_or_404(tweet ,pk= tweet_id , user = request.user)
+    tweets = get_object_or_404(tweet , pk =tweet_id , user = request.user)
     if request.method == "POST":
-        tweet.delete()
-        return redirect('List_tweets')
+        tweets.delete()
+        return redirect('tweet_list')
     return render( request , 'tweet_confirm_delete.html' , {'tweet' : tweet})
     
     

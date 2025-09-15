@@ -11,4 +11,4 @@ class tweet(models.Model):
     updated_at = models.DateTimeField(auto_now= True)
 
 def __str__(self):
-    return self.user
+    return f"{self.user}: {self.description.des[:20]}"
