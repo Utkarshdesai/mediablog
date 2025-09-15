@@ -14,9 +14,11 @@ Tweets Page
   <p> {{tweet.description}}   </p> 
    <img src = {{tweet.photo.url}} />
    <p> {{tweet.user}} </p>
-
-   <a href="{% url 'new_tweet' tweet.id %}"> Edit </a> 
-   <a href="{% url 'delete_tweet'  tweet.id %}"> Delete </a> 
+    {% if tweet.user == user %}
+      <a href="{% url 'new_tweet' tweet.id %}"> Edit </a> 
+      <a href="{% url 'delete_tweet'  tweet.id %}"> Delete </a>
+    {% endif %}
+ 
 {% endfor %}
 
 

@@ -16,9 +16,26 @@
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <a href="/" class="text-xl font-bold">Chai aur Django</a>
             <div class="space-x-6">
-                <a href="/" class="hover:text-gray-300">Home</a>
-                <a href="/tweet/" class="hover:text-gray-300">Tweets</a>
-                <a href="/about/" class="hover:text-gray-300">About</a>
+                <a href="{% url 'tweet_list' %}"> Home </a>
+                
+              
+                {% if user.is_authenticated %}
+                  
+                   <form method="post" action = " {% url "logout" %}">
+                            {% csrf_token %}
+                            {{form}}
+                            <button type="submit"> logout </button>
+                          
+                        </form>
+
+                {% else %}
+                      <a href="{% url 'register' %}"> register  </a>
+                        <a href="{% url 'login' %}"> Login  </a>
+                                            
+
+
+
+                {% endif %}
             </div>
         </div>
     </nav>
