@@ -1,11 +1,11 @@
 from django import forms
-from .models import tweet 
+from .models import Tweet
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class tweetform(forms.ModelForm):
     class Meta:
-        model = tweet 
+        model = Tweet
         fields = ['user' ,'photo' , 'description']
 
 class UserRegisterationForm(UserCreationForm):

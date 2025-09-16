@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import tweet
+from .models import Tweet
 from .forms import tweetform , UserRegisterationForm
 from django.shortcuts import get_object_or_404 , redirect
 from django.contrib.auth.decorators import login_required 
@@ -12,7 +12,7 @@ def home(request):
 # List down all the tweets 
 def List_tweets(request):
     # fetch tweet from model 
-    Tweets = tweet.objects.all().order_by('-created_at')
+    Tweets = Tweet.objects.all().order_by('-created_at')
     # pass to templates 
     return render( request , 'tweet_list.html' , { 'tweets': Tweets } )
 
@@ -38,9 +38,9 @@ def New_tweet(request):
 # edit twwets
 @login_required
 def Edit_tweet(request , tweet_id):
-    tweets = get_object_or_404(tweet , pk= tweet_id , user = request.user)
+    tweets = get_object_or_404(Tweet , pk= tweet_id , user = request.user)
     if request.method == 'POST':
-      form = tweetform(request.POST , request.FILES , instance=tweet)
+      form = tweetform(request.POST , request.FILES , instance = tweets)
       if form.is_valid():
           tweets = form.save(commit=False)
           tweets.user = request.user
@@ -53,11 +53,11 @@ def Edit_tweet(request , tweet_id):
 
 @login_required
 def delete_tweet(request , tweet_id):
-    tweets = get_object_or_404(tweet , pk =tweet_id , user = request.user)
+    tweets = get_object_or_404(Tweet , pk =tweet_id , user = request.user)
     if request.method == "POST":
         tweets.delete()
         return redirect('tweet_list')
-    return render( request , 'tweet_confirm_delete.html' , {'tweet' : tweet})
+    return render( request , 'tweet_confirm_delete.html' , {'tweet' : tweets})
 
 
 def Register(request):

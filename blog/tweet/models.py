@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class tweet(models.Model):
+class Tweet(models.Model):
     user = models.ForeignKey(User , on_delete= models.CASCADE)
     photo = models.ImageField(upload_to='static/' , blank=True , null= True)
     description = models.TextField(max_length = 200)
