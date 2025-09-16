@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Chai aur Django{% endblock title %}</title>
-
+      <link rel="stylesheet" href="{% static 'style.css' %}">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -14,22 +14,23 @@
     <!-- Navbar -->
     <nav class="bg-gray-800 text-white p-4 m">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="/" class="text-xl font-bold">Chai aur Django</a>
-            <div class="space-x-6">
-                <a href="{% url 'tweet_list' %}"> Home </a>
+            <a href="/" class="text-xl font-bold"> Welcome to mediablog </a>
+            <div class="space-x-6 flex">
+                <a  href="{% url 'tweet_list' %}"> Home </a>
                 
               
                 {% if user.is_authenticated %}
                   
-                   <form method="post" action = " {% url "logout" %}">
+                <form method="post" action="{% url "logout" %}" class="logout-form inline">
                             {% csrf_token %}
-                            {{form}}
-                            <button type="submit"> logout </button>
+                           
+                            <button type="submit"> Logout </button>
                           
-                        </form>
+                        </form>  
 
+                
                 {% else %}
-                      <a href="{% url 'register' %}"> register  </a>
+                       <a href="{% url 'register' %}"> register  </a>
                         <a href="{% url 'login' %}"> Login  </a>
                                             
 
@@ -40,13 +41,16 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
-    <div class="max-w-4xl mx-auto mt-6 p-4">
+
+   
+
+     <!-- Page Content -->
+    <div class="mx-auto mt-6 p-4">
         {% block content %}
         <!-- Default content (if no child template overrides this) -->
         <p class="text-gray-600">Welcome! This is the default page.</p>
         {% endblock %}
-    </div>
+    </div> 
 
 </body>
 </html>

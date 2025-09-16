@@ -8,19 +8,25 @@ Tweets Page
 
 
 {% if form.instance.pk %}
- edit tweet
+ <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Edit Tweet</h1>
 {% else %}
-Create tweet
+<h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Create Tweet</h1>
+
+
 
 {% endif %}
 
-<form method="post" enctype="multipart/form-data">
+
+<form method="post" enctype="multipart/form-data" class="bg-white rounded-lg shadow-md p-6 max-w-lg mx-auto space-y-4">
      {% csrf_token %}
-     {{form}}
-     <button type="submit"> submit </button>
-     <a href="{% url 'tweet_list' %}"> GO back  </a>
-  </form>
-  
+     <div class="space-y-4">
+         {{form}}
+     </div>
+     <div class="flex space-x-3 pt-4">
+         <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"> Submit </button>
+         <a href="{% url 'tweet_list' %}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">  Back </a>
+     </div>
+</form>
 {% endblock %}
 
 

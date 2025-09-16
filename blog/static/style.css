@@ -1,0 +1,166 @@
+/* form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+  
+    color: #374151;
+    font-size: 14px;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+form select:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #f97316;
+    border-color: #f97316;
+}
+
+form input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d5d1dbff;
+    border-radius: 8px;
+    background-color: white;
+    color: #374151;
+    font-size: 14px;
+}
+
+form input[type="file"]:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #f97316;
+    border-color: #f97316;
+}
+
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: white;
+    color: #374151;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 96px;
+}
+
+form textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #f97316;
+    border-color: #f97316;
+}
+
+form label {
+    display: block;
+    color: #374151;
+    font-weight: 500;
+    margin-bottom: 8px;
+} */
+
+/* === Global Form Styles === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* spacing between fields */
+    max-width: 400px;
+    margin: 0 auto; /* center form horizontally */
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* === Input, Select, Textarea Fields === */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    color: #374151;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus State for Inputs */
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #f97316; /* orange border */
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.3); /* nice glow */
+}
+
+/* === Labels === */
+form label {
+    display: block;
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* === Buttons === */
+form button {
+    background-color: #f97316;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+form button:hover {
+    background-color: #ea580c;
+}
+
+form button:active {
+    transform: scale(0.98); /* click effect */
+}
+
+/* === Additional Text (like links below forms) === */
+.form-footer {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.form-footer a {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Style for logout form inside navbar */
+.logout-form {
+    display: inline; /* keeps it inline with other links */
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.logout-form .logout-btn {
+    background-color: #ef4444; /* Tailwind's red-500 */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+
+
+

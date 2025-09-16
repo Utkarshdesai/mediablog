@@ -5,14 +5,15 @@ Tweets Page
 {% endblock title %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-4"> login form </h1>
+<h1 class="text-2xl font-bold mb-4 text-center"> Login form </h1>
 <form method="post" enctype="multipart/form-data">
      {% csrf_token %}
-     {{form}}
+     {{form.as_p}}
      <button type="submit"> Login </button>
-     <p> dont have account here 
-     <a href="{% url 'register' %}"> register here </a>
-     </p>
+     <p class="text-base text-gray-600 text-center"> dont have account here </p>
+     <button>
+         <a href="{% url 'register' %}"> register here </a>
+      </button>
   </form>
 
 {% endblock content %}

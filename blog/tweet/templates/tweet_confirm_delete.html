@@ -6,7 +6,7 @@ Tweets Page
 
 {% block content %}
 
-<p> Do you really want to delete this tweet  </P>
+<p class ="text-2xl font-bold mb-4 text-center"> Do you really want to delete this tweet  </P>
 <form method="post" enctype="multipart/form-data">
      {% csrf_token %}
      {{form}}
